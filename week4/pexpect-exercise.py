@@ -1,14 +1,18 @@
 """pexpect"""
 import pexpect
+import os
+from dotenv import load_dotenv
 
 def main():
     """pexpect"""
     PROMPT = '#'
     router_id = [1, 2]
     routers_ip = ['172.31.101.3', '172.31.101.4']
-    USERNAME = 'admin'
-    PASSWORD = 'cisco'
-    COMMAND = ['configure terminal', 'int loop 0', 'vrf forwarding control-data' ,'ip address ', 'no shut', 'end']
+    load_dotenv()
+    USERNAME = os.environ.get('TELNET_USER')
+    PASSWORD = os.environ.get('TELNET_PASSWORD')
+
+    COMMAND = ['configure terminal', 'int loop 0', 'vrf forwarding control-data', 'ip address ', 'no shut', 'end']
     test_command = "sh ip int bri"
     
     for rid, rip in zip(router_id, routers_ip):
