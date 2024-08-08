@@ -1,0 +1,21 @@
+---
+- name: R1-1
+  management_ip: "172.31.101.3"
+  ospf_id: 1
+  vrf: control-data
+  networks:
+    - network: 192.168.1.0
+      wc_mask: 0.0.0.255
+    - network: 192.168.2.0
+      wc_mask: 0.0.0.255
+  border: False
+- name: R2-1
+  management_ip: "172.31.101.4"
+  ospf_id: 1
+  vrf: control-data
+  networks:
+    - network: 192.168.2.0
+      wc_mask: 0.0.0.255
+    - network: 192.168.3.0
+      wc_mask: 0.0.0.255
+  border: True
